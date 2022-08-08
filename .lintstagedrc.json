@@ -1,0 +1,3 @@
+{
+    "(*.ts|*.html)": ["npx ng lint browser-livesplit-viewer --fix=true --lint-file-patterns"]
+}
