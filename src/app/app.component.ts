@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from './services/auth';
-import { FirestoreService } from './services/firestore';
+import { PlayersService } from './services/players';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,14 @@ import { FirestoreService } from './services/firestore';
 })
 export class AppComponent {
   readonly authService = inject(AuthService);
-  readonly firestoreService = inject(FirestoreService);
+  readonly playersService = inject(PlayersService);
 
   constructor() {
     this.authService.getUser().subscribe(user => {
       console.log(user);
     });
 
-    this.firestoreService.getDocs('players').subscribe(docs => {
+    this.playersService.getPlayers('moocow', '1234').subscribe(docs => {
       console.log(docs);
     });
   }

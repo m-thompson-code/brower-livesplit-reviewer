@@ -7,24 +7,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
+  declarations: [  
     AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule, 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
   providers: [
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
   ],
   bootstrap: [AppComponent]
